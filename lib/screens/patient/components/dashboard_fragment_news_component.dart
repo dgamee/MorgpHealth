@@ -14,22 +14,22 @@ class DashBoardFragmentNewsComponent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ViewAllLabel(
-          label: locale.lblExpertsHealthTipsAndAdvice,
-          subLabel: locale.lblArticlesByHighlyQualifiedDoctors,
-          list: newsList.validate(),
-          viewAllShowLimit: 2,
-          onTap: () => patientStore.setBottomNavIndex(2),
-        ),
-        8.height,
-        Wrap(
-          runSpacing: 16,
-          spacing: 16,
-          children: List.generate(
-            newsList.take(3).length,
-            (index) => NewsDashboardWidget(newsData: newsList[index]),
-          ),
-        )
+        // ViewAllLabel(
+        //   label: locale.lblExpertsHealthTipsAndAdvice,
+        //   subLabel: locale.lblArticlesByHighlyQualifiedDoctors,
+        //   list: newsList.validate(),
+        //   viewAllShowLimit: 2,
+        //   onTap: () => patientStore.setBottomNavIndex(2),
+        // ),
+        // 8.height,
+        // Wrap(
+        //   runSpacing: 16,
+        //   spacing: 16,
+        //   children: List.generate(
+        //     newsList.take(3).length,
+        //     (index) => NewsDashboardWidget(newsData: newsList[index]),
+        //   ),
+        // )
       ],
     ).paddingSymmetric(horizontal: 16);
   }

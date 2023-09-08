@@ -19,10 +19,20 @@ import 'package:nb_utils/nb_utils.dart';
 
 import 'package:kivicare_flutter/model/upcoming_appointment_model.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:http/http.dart' as http;
+
+Future<void> fetchFormData() async {
+  final response = await http.get(Uri.parse(
+      'https://morgphealth.com/wp-json/forminator/v1/[forminator_form id="38813"]/'));
+
+  if (response.statusCode == 200) {
+    // Parse the response and handle the data
+  } else {
+    throw Exception('Failed to load form data');
+  }
+}
 
 class Insurance extends StatefulWidget {
-  const Insurance({super.key});
-
   @override
   State<Insurance> createState() => _InsuranceState();
 }
@@ -30,59 +40,62 @@ class Insurance extends StatefulWidget {
 class _InsuranceState extends State<Insurance> {
   @override
   Widget build(BuildContext context) {
+    const title = 'Insurance';
     return MaterialApp(
-      theme: ThemeData(useMaterial3: true),
-      home: InsurancePage(),
-      debugShowCheckedModeBanner: false,
-    );
+        title: title,
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text(title),
+          ),
+          body: GridView.count(
+            crossAxisCount: 2,
+            primary: false,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            children:<Widget> [
+              Container(
+                padding: const EdgeInsets.all(8),
+                color: Colors.teal[100],
+                child: const Text("Family Insurance"),
+              )
+            ],
+            ),
+        )
+        );
   }
 }
 
-class InsurancePage extends StatefulWidget {
-  const InsurancePage({super.key});
+class FamilyInsurance extends StatefulWidget {
+  const FamilyInsurance({super.key});
 
   @override
-  State<InsurancePage> createState() => _InsurancePageState();
+  State<FamilyInsurance> createState() => _FamilyInsuranceState();
 }
 
-class _InsurancePageState extends State<InsurancePage> {
-  var loadingPercentage = 0;
-  late final WebViewController controller;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = WebViewController()
-      ..setNavigationDelegate(NavigationDelegate(
-        onPageStarted: (url) {
-          setState(() {
-            loadingPercentage = 0;
-          });
-        },
-        onProgress: (progress) {
-          setState(() {
-            loadingPercentage = progress;
-          });
-        },
-        onPageFinished: (url) {
-          setState(() {
-            loadingPercentage = 100;
-          });
-        },
-      ))
-      ..loadRequest(Uri.parse('https://morgphealth.com/insurance-2'));
-  }
+class _FamilyInsuranceState extends State<FamilyInsurance> {
+  TextEditingController dateinput = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        WebViewWidget(controller: controller),
-        if (loadingPercentage < 100)
-          LinearProgressIndicator(
-            value: loadingPercentage / 100.0,
-          )
-      ],
+    return Scaffold(
+      appBar: AppBar(title: Text('Insurance')),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Text(
+                'Hi I`m Brian, I`m here to help you with Your MorgpHealth Insurance Quote'),
+            TextFormField(decoration: InputDecoration(labelText: 'First Name')),
+            TextFormField(
+                decoration: InputDecoration(labelText: 'Email Address')),
+            TextFormField(
+                controller: dateinput,
+                decoration: InputDecoration(
+                    icon: Icon(Icons.calendar_today),
+                    labelText: 'Date of Birth')),
+          ],
+        ),
+      ),
     );
   }
 }
