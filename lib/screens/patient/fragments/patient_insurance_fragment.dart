@@ -33,6 +33,8 @@ Future<void> fetchFormData() async {
 }
 
 class Insurance extends StatefulWidget {
+  const Insurance({super.key});
+
   @override
   State<Insurance> createState() => _InsuranceState();
 }
@@ -40,60 +42,72 @@ class Insurance extends StatefulWidget {
 class _InsuranceState extends State<Insurance> {
   @override
   Widget build(BuildContext context) {
-    const title = 'Insurance';
     return MaterialApp(
-        title: title,
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text(title),
-          ),
-          body: GridView.count(
-            crossAxisCount: 2,
-            primary: false,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            children:<Widget> [
-              Container(
-                padding: const EdgeInsets.all(8),
-                color: Colors.teal[100],
-                child: const Text("Family Insurance"),
-              )
-            ],
-            ),
-        )
-        );
+      title: 'Insurance',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: InsurancePage(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
 
-class FamilyInsurance extends StatefulWidget {
-  const FamilyInsurance({super.key});
+class InsurancePage extends StatefulWidget {
+  const InsurancePage({super.key});
 
   @override
-  State<FamilyInsurance> createState() => _FamilyInsuranceState();
+  State<InsurancePage> createState() => _InsurancePageState();
 }
 
-class _FamilyInsuranceState extends State<FamilyInsurance> {
-  TextEditingController dateinput = TextEditingController();
-
+class _InsurancePageState extends State<InsurancePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Insurance')),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Text(
-                'Hi I`m Brian, I`m here to help you with Your MorgpHealth Insurance Quote'),
-            TextFormField(decoration: InputDecoration(labelText: 'First Name')),
-            TextFormField(
-                decoration: InputDecoration(labelText: 'Email Address')),
-            TextFormField(
-                controller: dateinput,
-                decoration: InputDecoration(
-                    icon: Icon(Icons.calendar_today),
-                    labelText: 'Date of Birth')),
-          ],
+      appBar: AppBar(
+          title: Text('Insurance'),
+          centerTitle: true,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: <Color>[Colors.purple, Colors.blue])),
+          )),
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: GridView(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, crossAxisSpacing: 20, mainAxisSpacing: 20),
+            children: [
+
+
+              
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.person_2_rounded,
+                    color: Colors.white, size: 24.0),
+                label: Text('I Need Health Insurance For Myself'),
+              ),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.people, color: Colors.white, size: 24.0),
+                label: Text('I Need Cover For Myself And My Partner'),
+              ),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.family_restroom,
+                    color: Colors.white, size: 24.0),
+                label: Text('I Need Cover For My Whole Family'),
+              ),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.business, color: Colors.white, size: 24.0),
+                label: Text('I Need Health Insurance For My Employees'),
+              )
+            ],
+          ),
         ),
       ),
     );
