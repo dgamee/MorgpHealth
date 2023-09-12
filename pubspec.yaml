@@ -14,15 +14,13 @@ dependencies:
 
   cupertino_icons: ^1.0.5
 
-
   # Firebase for crashlytics
-
+  flutter_inappwebview: ^5.7.2+3
   firebase_crashlytics: ^3.3.3
   firebase_analytics: ^10.4.3
   firebase_remote_config: ^4.2.3
   google_fonts: ^5.1.0
   moment_dart: ^0.17.4
-
 
   #State Management Technique
   mobx: ^2.2.0
@@ -43,7 +41,7 @@ dependencies:
   flutter_svg: ^2.0.7
   font_awesome_flutter: ^10.5.0
   cached_network_image: ^3.2.3
-  webview_flutter: ^4.2.4
+  webview_flutter: ^4.0.2
   flutter_slidable: ^3.0.0
   percent_indicator: ^4.2.3
   signature: ^5.4.0
@@ -56,6 +54,7 @@ dependencies:
   url_launcher: ^6.1.12
   share: ^2.0.4
   flutter_custom_tabs: ^1.0.4
+
   get_storage: ^2.1.1
 
   # Pickers for image and file and dates
@@ -82,7 +81,6 @@ dependency_overrides:
   http: ^0.13.0
 
 flutter:
-
   uses-material-design: true
 
   assets:
