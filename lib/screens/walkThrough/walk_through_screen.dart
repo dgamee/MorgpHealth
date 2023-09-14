@@ -26,10 +26,22 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
   }
 
   init() async {
-    walkthroughList.add(WalkThroughModel(image: walk_through_1, title: locale.lblWalkThroughTitle1, subTitle: "Welcome to MorpgHealth"));
-    walkthroughList.add(WalkThroughModel(image: walk_through_2, title: locale.lblWalkThroughTitle2, subTitle: ""));
-    walkthroughList.add(WalkThroughModel(image: walk_through_3, title: locale.lblWalkThroughTitle3, subTitle: ""));
-    walkthroughList.add(WalkThroughModel(image: walk_through_4, title: locale.lblWalkThroughTitle4, subTitle: ""));
+    walkthroughList.add(WalkThroughModel(
+        image: walk_through_1,
+        title: locale.lblWalkThroughTitle1,
+        subTitle: "Welcome to MorgpHealth"));
+    walkthroughList.add(WalkThroughModel(
+        image: walk_through_2,
+        title: locale.lblWalkThroughTitle2,
+        subTitle: ""));
+    walkthroughList.add(WalkThroughModel(
+        image: walk_through_3,
+        title: locale.lblWalkThroughTitle3,
+        subTitle: ""));
+    walkthroughList.add(WalkThroughModel(
+        image: walk_through_4,
+        title: locale.lblWalkThroughTitle4,
+        subTitle: ""));
   }
 
   @override
@@ -44,22 +56,29 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
           setValue(IS_WALKTHROUGH_FIRST, true);
           SignInScreen().launch(context);
         } else {
-          pageController.nextPage(duration: Duration(milliseconds: 250), curve: Curves.easeInOut);
+          pageController.nextPage(
+              duration: Duration(milliseconds: 250), curve: Curves.easeInOut);
         }
       },
       child: Container(
         width: 150,
         padding: EdgeInsets.all(16),
-        decoration: boxDecorationWithRoundedCorners(backgroundColor: appPrimaryColor, borderRadius: BorderRadius.circular(defaultRadius)),
+        decoration: boxDecorationWithRoundedCorners(
+            backgroundColor: appPrimaryColor,
+            borderRadius: BorderRadius.circular(defaultRadius)),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             AnimatedCrossFade(
               sizeCurve: Curves.fastLinearToSlowEaseIn,
-              firstChild: Text(locale.lblWalkThroughGetStartedButton, style: boldTextStyle(color: white)),
-              secondChild: Text(locale.lblWalkThroughNextButton, style: boldTextStyle(color: Colors.white)),
+              firstChild: Text(locale.lblWalkThroughGetStartedButton,
+                  style: boldTextStyle(color: white)),
+              secondChild: Text(locale.lblWalkThroughNextButton,
+                  style: boldTextStyle(color: Colors.white)),
               duration: Duration(milliseconds: 300),
-              crossFadeState: selectedIndex == (walkthroughList.length - 1) ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+              crossFadeState: selectedIndex == (walkthroughList.length - 1)
+                  ? CrossFadeState.showFirst
+                  : CrossFadeState.showSecond,
             ).center().expand(),
             Icon(Icons.arrow_forward_outlined, color: Colors.white),
           ],
@@ -79,9 +98,14 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
                 .map(
                   (data) => Column(
                     children: [
-                      Image.asset(data.image.validate(), height: context.height() * 0.45),
-                      Text(data.title.validate(), style: boldTextStyle(size: 25)),
-                      Text(data.subTitle.validate(), textAlign: TextAlign.center, style: secondaryTextStyle()).paddingAll(32),
+                      Image.asset(data.image.validate(),
+                          height: context.height() * 0.45),
+                      Text(data.title.validate(),
+                          style: boldTextStyle(size: 25)),
+                      Text(data.subTitle.validate(),
+                              textAlign: TextAlign.center,
+                              style: secondaryTextStyle())
+                          .paddingAll(32),
                     ],
                   ),
                 )
@@ -95,7 +119,10 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
             bottom: context.height() / 4 - 32,
             left: -10,
             right: 0,
-            child: DotIndicator(pageController: pageController, pages: walkthroughList, indicatorColor: primaryColor),
+            child: DotIndicator(
+                pageController: pageController,
+                pages: walkthroughList,
+                indicatorColor: primaryColor),
           ),
           Positioned(right: 16, bottom: 35, child: buildWidget()),
           Positioned(
@@ -106,7 +133,8 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
                 setValue(IS_WALKTHROUGH_FIRST, true);
                 SignInScreen().launch(context);
               },
-              child: Text(locale.lblWalkThroughSkipButton, style: boldTextStyle()),
+              child:
+                  Text(locale.lblWalkThroughSkipButton, style: boldTextStyle()),
             ),
           ),
         ],

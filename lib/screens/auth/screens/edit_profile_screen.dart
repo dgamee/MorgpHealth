@@ -41,18 +41,30 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   UniqueKey genderKey = UniqueKey();
 
-  TextEditingController firstNameCont = TextEditingController(text: cachedUserData?.firstName ?? '');
-  TextEditingController lastNameCont = TextEditingController(text: cachedUserData?.lastName ?? '');
-  TextEditingController emailCont = TextEditingController(text: cachedUserData?.userEmail ?? '');
-  TextEditingController contactNumberCont = TextEditingController(text: cachedUserData?.mobileNumber ?? '');
-  TextEditingController dobCont = TextEditingController(text: cachedUserData?.dob ?? '');
-  TextEditingController genderCont = TextEditingController(text: cachedUserData?.gender ?? '');
-  TextEditingController addressCont = TextEditingController(text: cachedUserData?.address ?? '');
-  TextEditingController cityCont = TextEditingController(text: cachedUserData?.city ?? '');
-  TextEditingController postalCodeCont = TextEditingController(text: cachedUserData?.postalCode ?? '');
-  TextEditingController countryCont = TextEditingController(text: cachedUserData?.country ?? '');
-  TextEditingController experienceCont = TextEditingController(text: cachedUserData?.noOfExperience ?? '');
-  TextEditingController signatureCont = TextEditingController(text: cachedUserData?.signatureImg ?? '');
+  TextEditingController firstNameCont =
+      TextEditingController(text: cachedUserData?.firstName ?? '');
+  TextEditingController lastNameCont =
+      TextEditingController(text: cachedUserData?.lastName ?? '');
+  TextEditingController emailCont =
+      TextEditingController(text: cachedUserData?.userEmail ?? '');
+  TextEditingController contactNumberCont =
+      TextEditingController(text: cachedUserData?.mobileNumber ?? '');
+  TextEditingController dobCont =
+      TextEditingController(text: cachedUserData?.dob ?? '');
+  TextEditingController genderCont =
+      TextEditingController(text: cachedUserData?.gender ?? '');
+  TextEditingController addressCont =
+      TextEditingController(text: cachedUserData?.address ?? '');
+  TextEditingController cityCont =
+      TextEditingController(text: cachedUserData?.city ?? '');
+  TextEditingController postalCodeCont =
+      TextEditingController(text: cachedUserData?.postalCode ?? '');
+  TextEditingController countryCont =
+      TextEditingController(text: cachedUserData?.country ?? '');
+  TextEditingController experienceCont =
+      TextEditingController(text: cachedUserData?.noOfExperience ?? '');
+  TextEditingController signatureCont =
+      TextEditingController(text: cachedUserData?.signatureImg ?? '');
 
   FocusNode firstNameFocus = FocusNode();
   FocusNode lastNameFocus = FocusNode();
@@ -109,7 +121,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     emailCont.text = userData.userEmail.validate();
     contactNumberCont.text = userData.mobileNumber.validate();
     if (userData.dob.validate().isNotEmpty) {
-      selectedBirthDate = DateFormat(SAVE_DATE_FORMAT).parse(userData.dob.validate());
+      selectedBirthDate =
+          DateFormat(SAVE_DATE_FORMAT).parse(userData.dob.validate());
       dobCont.text = selectedBirthDate.getFormattedDate(SAVE_DATE_FORMAT);
     }
     genderCont.text = userData.gender.validate();
@@ -124,7 +137,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       specializationList.clear();
       if (userData.specialties.validate().isNotEmpty) {
         userData.specialties.validate().forEach((element) {
-          specializationList.add(StaticData(id: element.id, label: element.label));
+          specializationList
+              .add(StaticData(id: element.id, label: element.label));
         });
         specializationList.validate().forEach((element) {
           multiSelectStore.addSingleStaticItem(element, isClear: false);
@@ -182,13 +196,21 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     };
     request.putIfAbsent("ID", () => userStore.userId.validate());
     if (isDoctor()) {
-      request.putIfAbsent('specialties', () => jsonEncode(multiSelectStore.selectedStaticData));
+      request.putIfAbsent(
+          'specialties', () => jsonEncode(multiSelectStore.selectedStaticData));
       request.putIfAbsent('no_of_experience', () => experienceCont.text);
-      request.putIfAbsent('qualifications', () => jsonEncode(qualificationList));
+      request.putIfAbsent(
+          'qualifications', () => jsonEncode(qualificationList));
     }
 
-    File? doctorSignature = await getSignatureInFile(context, controller: _controller, fileName: "${firstNameCont.text}_doctor_signature");
-    await updateProfileAPI(data: request, profileImage: selectedProfileImage, doctorSignature: doctorSignature).then((value) {
+    File? doctorSignature = await getSignatureInFile(context,
+        controller: _controller,
+        fileName: "${firstNameCont.text}_doctor_signature");
+    await updateProfileAPI(
+            data: request,
+            profileImage: selectedProfileImage,
+            doctorSignature: doctorSignature)
+        .then((value) {
       appStore.setLoading(false);
       init();
     }).catchError((e) {
@@ -222,9 +244,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             key: formKey,
             child: AnimatedScrollView(
               listAnimationType: ListAnimationType.None,
-              padding: EdgeInsets.only(bottom: 60, left: 16, right: 16, top: 16),
+              padding:
+                  EdgeInsets.only(bottom: 60, left: 16, right: 16, top: 16),
               children: [
-                Text(locale.lblBasicDetails, style: boldTextStyle(color: context.primaryColor, size: 18)),
+                Text(locale.lblBasicDetails,
+                    style:
+                        boldTextStyle(color: context.primaryColor, size: 18)),
                 Divider(color: viewLineColor, height: 24),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -233,21 +258,41 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       clipBehavior: Clip.none,
                       children: <Widget>[
                         Container(
-                          decoration: boxDecorationDefault(color: appStore.isDarkModeOn ? cardDarkColor : context.scaffoldBackgroundColor, shape: BoxShape.circle),
+                          decoration: boxDecorationDefault(
+                              color: appStore.isDarkModeOn
+                                  ? cardDarkColor
+                                  : context.scaffoldBackgroundColor,
+                              shape: BoxShape.circle),
                           child: selectedProfileImage != null
-                              ? Image.file(File(selectedProfileImage!.path), height: 126, width: 126, fit: BoxFit.cover, alignment: Alignment.center).cornerRadiusWithClipRRect(180)
-                              : CachedImageWidget(url: userStore.profileImage.validate(), height: 126, fit: BoxFit.cover, circle: true),
+                              ? Image.file(File(selectedProfileImage!.path),
+                                      height: 126,
+                                      width: 126,
+                                      fit: BoxFit.cover,
+                                      alignment: Alignment.center)
+                                  .cornerRadiusWithClipRRect(180)
+                              : CachedImageWidget(
+                                  url: userStore.profileImage.validate(),
+                                  height: 126,
+                                  fit: BoxFit.cover,
+                                  circle: true),
                         ),
                         Positioned(
                           bottom: -4,
                           right: 0,
                           child: Container(
                             padding: EdgeInsets.all(8),
-                            decoration: boxDecorationDefault(color: appPrimaryColor, shape: BoxShape.circle, border: Border.all(color: white, width: 3)),
-                            child: ic_camera.iconImage(size: 14, color: Colors.white),
+                            decoration: boxDecorationDefault(
+                                color: appPrimaryColor,
+                                shape: BoxShape.circle,
+                                border: Border.all(color: white, width: 3)),
+                            child: ic_camera.iconImage(
+                                size: 14, color: Colors.white),
                           ).onTap(() async {
                             _onProfileChange();
-                          }, splashColor: Colors.transparent, highlightColor: Colors.transparent, borderRadius: radius()),
+                          },
+                              splashColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              borderRadius: radius()),
                         )
                       ],
                     ).center().paddingBottom(24),
@@ -262,7 +307,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               nextFocus: lastNameFocus,
                               textFieldType: TextFieldType.NAME,
                               textInputAction: TextInputAction.next,
-                              decoration: inputDecoration(context: context, labelText: locale.lblFirstName),
+                              decoration: inputDecoration(
+                                  context: context,
+                                  labelText: locale.lblFirstName),
                             ).expand(),
                             10.width,
                             AppTextField(
@@ -271,7 +318,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               textInputAction: TextInputAction.next,
                               nextFocus: emailFocus,
                               textFieldType: TextFieldType.NAME,
-                              decoration: inputDecoration(context: context, labelText: locale.lblLastName),
+                              decoration: inputDecoration(
+                                  context: context,
+                                  labelText: locale.lblLastName),
                             ).expand(),
                           ],
                         ),
@@ -281,7 +330,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           textInputAction: TextInputAction.next,
                           nextFocus: contactNumberFocus,
                           textFieldType: TextFieldType.EMAIL,
-                          decoration: inputDecoration(context: context, labelText: locale.lblEmail),
+                          decoration: inputDecoration(
+                              context: context, labelText: locale.lblEmail),
                         ),
                         Row(
                           children: [
@@ -290,37 +340,41 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               focus: contactNumberFocus,
                               nextFocus: dobFocus,
                               textInputAction: TextInputAction.next,
-                              inputFormatters: [LengthLimitingTextInputFormatter(10)],
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(10)
+                              ],
                               textFieldType: TextFieldType.PHONE,
-                              decoration: inputDecoration(context: context, labelText: locale.lblContactNumber),
+                              decoration: inputDecoration(
+                                  context: context,
+                                  labelText: locale.lblContactNumber),
                             ).expand(),
                             16.width,
-                            AppTextField(
-                              controller: dobCont,
-                              focus: dobFocus,
-                              textInputAction: TextInputAction.next,
-                              nextFocus: addressFocus,
-                              textFieldType: TextFieldType.OTHER,
-                              decoration: inputDecoration(context: context, labelText: locale.lblDOB),
-                              keyboardAppearance: appStore.isDarkModeOn ? Brightness.dark : Brightness.light,
-                              selectionControls: EmptyTextSelectionControls(),
-                              onTap: () {
-                                datePickerComponent(
-                                  context,
-                                  isAgeVerificationRequired: true,
-                                  helpText: locale.lblSelectBirthDate,
-                                  initialDate: selectedBirthDate,
-                                  onDateSelected: (birthDate) {
-                                    if (birthDate != null) {
-                                      selectedBirthDate = birthDate;
-                                      dobCont.text = selectedBirthDate.getFormattedDate(SAVE_DATE_FORMAT);
-                                    } else {
-                                      //
-                                    }
-                                  },
-                                );
-                              },
-                            ).expand(),
+                            // AppTextField(
+                            //   controller: dobCont,
+                            //   focus: dobFocus,
+                            //   textInputAction: TextInputAction.next,
+                            //   nextFocus: addressFocus,
+                            //   textFieldType: TextFieldType.OTHER,
+                            //   decoration: inputDecoration(context: context, labelText: locale.lblDOB),
+                            //   keyboardAppearance: appStore.isDarkModeOn ? Brightness.dark : Brightness.light,
+                            //   selectionControls: EmptyTextSelectionControls(),
+                            //   onTap: () {
+                            //     datePickerComponent(
+                            //       context,
+                            //       isAgeVerificationRequired: true,
+                            //       helpText: locale.lblSelectBirthDate,
+                            //       initialDate: selectedBirthDate,
+                            //       onDateSelected: (birthDate) {
+                            //         if (birthDate != null) {
+                            //           selectedBirthDate = birthDate;
+                            //           dobCont.text = selectedBirthDate.getFormattedDate(SAVE_DATE_FORMAT);
+                            //         } else {
+                            //           //
+                            //         }
+                            //       },
+                            //     );
+                            //   },
+                            // ).expand(),
                           ],
                         ),
                         GenderSelectionComponent(
@@ -333,35 +387,61 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         if (isDoctor())
                           GestureDetector(
                             onTap: () {
-                              MultiSelectSpecialization(selectedServicesId: multiSelectStore.selectedStaticData.validate().map((element) => element!.id.validate()).toList()).launch(context);
+                              MultiSelectSpecialization(
+                                      selectedServicesId: multiSelectStore
+                                          .selectedStaticData
+                                          .validate()
+                                          .map((element) =>
+                                              element!.id.validate())
+                                          .toList())
+                                  .launch(context);
                             },
                             child: Container(
                               padding: EdgeInsets.fromLTRB(10, 16, 16, 16),
                               width: context.width(),
-                              decoration: boxDecorationDefault(borderRadius: radius(), color: context.cardColor),
+                              decoration: boxDecorationDefault(
+                                  borderRadius: radius(),
+                                  color: context.cardColor),
                               child: Observer(
                                 builder: (_) {
                                   return Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(locale.lblSpecialization, style: secondaryTextStyle()),
-                                      if (multiSelectStore.selectedStaticData.validate().isNotEmpty) 16.height,
+                                      Text(locale.lblSpecialization,
+                                          style: secondaryTextStyle()),
+                                      if (multiSelectStore.selectedStaticData
+                                          .validate()
+                                          .isNotEmpty)
+                                        16.height,
                                       Wrap(
                                         spacing: 16,
                                         runSpacing: 8,
                                         children: List.generate(
-                                          multiSelectStore.selectedStaticData.length,
+                                          multiSelectStore
+                                              .selectedStaticData.length,
                                           (index) {
-                                            StaticData data = multiSelectStore.selectedStaticData[index]!;
+                                            StaticData data = multiSelectStore
+                                                .selectedStaticData[index]!;
                                             return Chip(
-                                              label: Text(data.label.validate(), style: primaryTextStyle()),
-                                              backgroundColor: context.cardColor,
-                                              deleteIcon: Icon(Icons.clear, size: 18),
+                                              label: Text(data.label.validate(),
+                                                  style: primaryTextStyle()),
+                                              backgroundColor:
+                                                  context.cardColor,
+                                              deleteIcon:
+                                                  Icon(Icons.clear, size: 18),
                                               deleteIconColor: Colors.red,
                                               onDeleted: () {
-                                                multiSelectStore.selectedStaticData.remove(data);
+                                                multiSelectStore
+                                                    .selectedStaticData
+                                                    .remove(data);
                                               },
-                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(defaultRadius), side: BorderSide(color: viewLineColor)),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          defaultRadius),
+                                                  side: BorderSide(
+                                                      color: viewLineColor)),
                                             );
                                           },
                                         ),
@@ -378,13 +458,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             focus: experienceFocus,
                             textFieldType: TextFieldType.OTHER,
                             keyboardType: TextInputType.number,
-                            decoration: inputDecoration(context: context, labelText: locale.lblExperience),
+                            decoration: inputDecoration(
+                                context: context,
+                                labelText: locale.lblExperience),
                           )
                       ],
                     )
                   ],
                 ).paddingBottom(24),
-                Text(locale.lblAddressDetail, style: boldTextStyle(color: context.primaryColor, size: 18)),
+                Text(locale.lblAddressDetail,
+                    style:
+                        boldTextStyle(color: context.primaryColor, size: 18)),
                 Divider(color: viewLineColor, height: 24),
                 Wrap(
                   runSpacing: 16,
@@ -397,7 +481,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       textFieldType: TextFieldType.MULTILINE,
                       minLines: 2,
                       maxLines: 4,
-                      decoration: inputDecoration(context: context, labelText: locale.lblAddress).copyWith(alignLabelWithHint: true),
+                      decoration: inputDecoration(
+                              context: context, labelText: locale.lblAddress)
+                          .copyWith(alignLabelWithHint: true),
                     ),
                     Row(
                       children: [
@@ -407,7 +493,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           nextFocus: cityFocus,
                           textInputAction: TextInputAction.next,
                           textFieldType: TextFieldType.OTHER,
-                          decoration: inputDecoration(context: context, labelText: locale.lblCountry),
+                          decoration: inputDecoration(
+                              context: context, labelText: locale.lblCountry),
                         ).expand(),
                         16.width,
                         AppTextField(
@@ -416,7 +503,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           nextFocus: postalCodeFocus,
                           textInputAction: TextInputAction.next,
                           textFieldType: TextFieldType.OTHER,
-                          decoration: inputDecoration(context: context, labelText: locale.lblCity),
+                          decoration: inputDecoration(
+                              context: context, labelText: locale.lblCity),
                         ).expand(),
                       ],
                     ),
@@ -424,11 +512,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       controller: postalCodeCont,
                       focus: postalCodeFocus,
                       inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly, // Only allows digits
+                        FilteringTextInputFormatter
+                            .digitsOnly, // Only allows digits
                       ],
                       textFieldType: TextFieldType.OTHER,
                       textInputAction: TextInputAction.done,
-                      decoration: inputDecoration(context: context, labelText: locale.lblPostalCode),
+                      decoration: inputDecoration(
+                          context: context, labelText: locale.lblPostalCode),
                     ),
                   ],
                 ).paddingSymmetric(vertical: 16),
@@ -445,8 +535,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     runSpacing: 16,
                     spacing: 16,
                     children: [
-                      Text(locale.lblSignature, style: boldTextStyle(color: context.primaryColor, size: 18)),
-                      if (signatureCont.text.validate().isNotEmpty) Image.memory(getImageFromBase64(signatureCont.text.validate())!).cornerRadiusWithClipRRect(defaultRadius),
+                      Text(locale.lblSignature,
+                          style: boldTextStyle(
+                              color: context.primaryColor, size: 18)),
+                      if (signatureCont.text.validate().isNotEmpty)
+                        Image.memory(getImageFromBase64(
+                                signatureCont.text.validate())!)
+                            .cornerRadiusWithClipRRect(defaultRadius),
                       if (signatureCont.text.validate().isEmpty)
                         Signature(
                           controller: _controller,
@@ -490,7 +585,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ),
           ),
           Observer(
-            builder: (context) => LoaderWidget().visible(appStore.isLoading).center(),
+            builder: (context) =>
+                LoaderWidget().visible(appStore.isLoading).center(),
           )
         ],
       ),
