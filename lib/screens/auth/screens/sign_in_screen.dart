@@ -96,10 +96,12 @@ class _SignInScreenState extends State<SignInScreen> {
         } else if (userStore.userRole!.toLowerCase() == UserRolePatient) {
           toast(locale.lblLoginSuccessfullyAsAPatient + '!! 🎉');
           patientStore.setBottomNavIndex(0);
-          PatientDashBoardScreen().launch(context, isNewTask: true, pageRouteAnimation: PageRouteAnimation.Slide);
+          PatientDashBoardScreen().launch(context,
+              isNewTask: true, pageRouteAnimation: PageRouteAnimation.Slide);
         } else if (userStore.userRole!.toLowerCase() == UserRoleReceptionist) {
           toast(locale.lblLoginSuccessfullyAsAReceptionist + '!! 🎉');
-          RDashBoardScreen().launch(context, isNewTask: true, pageRouteAnimation: PageRouteAnimation.Slide);
+          RDashBoardScreen().launch(context,
+              isNewTask: true, pageRouteAnimation: PageRouteAnimation.Slide);
         } else {
           toast(locale.lblWrongUser);
         }
@@ -124,7 +126,8 @@ class _SignInScreenState extends State<SignInScreen> {
       builder: (context) {
         return AppCommonDialog(
           title: locale.lblForgotPassword,
-          child: ForgotPasswordDialogComponent().cornerRadiusWithClipRRect(defaultRadius),
+          child: ForgotPasswordDialogComponent()
+              .cornerRadiusWithClipRRect(defaultRadius),
         );
       },
     );
@@ -212,17 +215,22 @@ class _SignInScreenState extends State<SignInScreen> {
               16.height,
               Row(
                 mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.qr_code_scanner_sharp, color: primaryColor),
-                  16.width,
-                  Text(locale.lblScanToTest, style: primaryTextStyle(color: primaryColor)),
-                ],
+                // children: [
+                //   Icon(Icons.qr_code_scanner_sharp, color: primaryColor),
+                //   16.width,
+                //   Text(locale.lblScanToTest,
+                //       style: primaryTextStyle(color: primaryColor)),
+                // ],
               ).onTap(
                 () {
                   ScannerScreen().launch(context).then((value) {
                     setStatusBarColor(
-                      appStore.isDarkModeOn ? context.scaffoldBackgroundColor : appPrimaryColor.withOpacity(0.02),
-                      statusBarIconBrightness: appStore.isDarkModeOn ? Brightness.light : Brightness.dark,
+                      appStore.isDarkModeOn
+                          ? context.scaffoldBackgroundColor
+                          : appPrimaryColor.withOpacity(0.02),
+                      statusBarIconBrightness: appStore.isDarkModeOn
+                          ? Brightness.light
+                          : Brightness.dark,
                     );
                     if (selectedIndex == null) {
                       selectedIndex = 0;
@@ -248,17 +256,17 @@ class _SignInScreenState extends State<SignInScreen> {
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
               ),
-              TextButton(
-                onPressed: () {
-                  QrInfoScreen().launch(context).then((value) {
-                    setStatusBarColor(
-                      appStore.isDarkModeOn ? context.scaffoldBackgroundColor : appPrimaryColor.withOpacity(0.02),
-                      statusBarIconBrightness: appStore.isDarkModeOn ? Brightness.light : Brightness.dark,
-                    );
-                  });
-                },
-                child: Text(locale.lblHowToGenerateQRCode, style: secondaryTextStyle()),
-              ),
+              // TextButton(
+              //   onPressed: () {
+              //     QrInfoScreen().launch(context).then((value) {
+              //       setStatusBarColor(
+              //         appStore.isDarkModeOn ? context.scaffoldBackgroundColor : appPrimaryColor.withOpacity(0.02),
+              //         statusBarIconBrightness: appStore.isDarkModeOn ? Brightness.light : Brightness.dark,
+              //       );
+              //     });
+              //   },
+              //   child: Text(locale.lblHowToGenerateQRCode, style: secondaryTextStyle()),
+              // ),
               32.height,
             ],
           );
@@ -275,7 +283,9 @@ class _SignInScreenState extends State<SignInScreen> {
         children: [
           Form(
             key: formKey,
-            autovalidateMode: isFirstTime ? AutovalidateMode.disabled : AutovalidateMode.onUserInteraction,
+            autovalidateMode: isFirstTime
+                ? AutovalidateMode.disabled
+                : AutovalidateMode.onUserInteraction,
             child: SingleChildScrollView(
               padding: EdgeInsets.all(16),
               child: Column(
@@ -285,7 +295,8 @@ class _SignInScreenState extends State<SignInScreen> {
                 children: [
                   36.height,
                   AppLogo(),
-                  Text(locale.lblSignInToContinue, style: secondaryTextStyle()).center(),
+                  Text(locale.lblSignInToContinue, style: secondaryTextStyle())
+                      .center(),
                   60.height,
                   AppTextField(
                     controller: emailCont,
@@ -293,7 +304,12 @@ class _SignInScreenState extends State<SignInScreen> {
                     nextFocus: passwordFocus,
                     textStyle: primaryTextStyle(),
                     textFieldType: TextFieldType.EMAIL,
-                    decoration: inputDecoration(context: context, labelText: locale.lblEmail, suffixIcon: ic_user.iconImage(size: 18, color: context.iconColor).paddingAll(14)),
+                    decoration: inputDecoration(
+                        context: context,
+                        labelText: locale.lblEmail,
+                        suffixIcon: ic_user
+                            .iconImage(size: 18, color: context.iconColor)
+                            .paddingAll(14)),
                   ),
                   24.height,
                   AppTextField(
@@ -301,9 +317,14 @@ class _SignInScreenState extends State<SignInScreen> {
                     focus: passwordFocus,
                     textStyle: primaryTextStyle(),
                     textFieldType: TextFieldType.PASSWORD,
-                    suffixPasswordVisibleWidget: ic_showPassword.iconImage(size: 10, color: context.iconColor).paddingAll(14),
-                    suffixPasswordInvisibleWidget: ic_hidePassword.iconImage(size: 10, color: context.iconColor).paddingAll(14),
-                    decoration: inputDecoration(context: context, labelText: locale.lblPassword),
+                    suffixPasswordVisibleWidget: ic_showPassword
+                        .iconImage(size: 10, color: context.iconColor)
+                        .paddingAll(14),
+                    suffixPasswordInvisibleWidget: ic_hidePassword
+                        .iconImage(size: 10, color: context.iconColor)
+                        .paddingAll(14),
+                    decoration: inputDecoration(
+                        context: context, labelText: locale.lblPassword),
                   ),
                   4.height,
                   Row(
@@ -318,7 +339,8 @@ class _SignInScreenState extends State<SignInScreen> {
                             height: 16,
                             child: Checkbox(
                               activeColor: appSecondaryColor,
-                              shape: RoundedRectangleBorder(borderRadius: radius(4)),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: radius(4)),
                               value: isRemember,
                               onChanged: (value) async {
                                 isRemember = value.validate();
@@ -332,7 +354,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               isRemember = !isRemember;
                               setState(() {});
                             },
-                            child: Text(locale.lblRememberMe, style: secondaryTextStyle()),
+                            child: Text(locale.lblRememberMe,
+                                style: secondaryTextStyle()),
                           ),
                         ],
                       ),
@@ -344,7 +367,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         },
                         child: Text(
                           locale.lblForgotPassword,
-                          style: secondaryTextStyle(color: appSecondaryColor, fontStyle: FontStyle.italic),
+                          style: secondaryTextStyle(
+                              color: appSecondaryColor,
+                              fontStyle: FontStyle.italic),
                         ),
                       ),
                     ],
@@ -358,7 +383,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     },
                     color: primaryColor,
                     padding: EdgeInsets.all(16),
-                    child: Text(locale.lblSignIn, style: boldTextStyle(color: textPrimaryDarkColor)),
+                    child: Text(locale.lblSignIn,
+                        style: boldTextStyle(color: textPrimaryDarkColor)),
                   ),
                   40.height,
                   LoginRegisterWidget(
@@ -368,12 +394,14 @@ class _SignInScreenState extends State<SignInScreen> {
                       SignUpScreen().launch(context);
                     },
                   ),
-                  // buildIconicWidget(),
+                  buildIconicWidget(),
                 ],
               ),
             ),
           ),
-          Observer(builder: (context) => LoaderWidget().visible(appStore.isLoading).center())
+          Observer(
+              builder: (context) =>
+                  LoaderWidget().visible(appStore.isLoading).center())
         ],
       ),
     );
