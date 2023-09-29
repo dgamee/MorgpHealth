@@ -88,9 +88,6 @@ class _PatientDashBoardFragmentState extends State<PatientDashBoardFragment> {
                 DashBoardFragmentUpcomingAppointmentComponent(
                     upcomingAppointment: snap.upcomingAppointment.validate()),
               16.height,
-              DashBoardFragmentTopDoctorComponent(
-                  doctorList: snap.doctor.validate()),
-              24.height,
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: ElevatedButton(
@@ -108,6 +105,9 @@ class _PatientDashBoardFragmentState extends State<PatientDashBoardFragment> {
                   ),
                 ),
               ),
+              DashBoardFragmentTopDoctorComponent(
+                  doctorList: snap.doctor.validate()),
+              24.height,
             ],
           ).visible(!appStore.isLoading,
               defaultWidget:
