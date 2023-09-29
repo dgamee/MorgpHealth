@@ -2,14 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:kivicare_flutter/components/body_widget.dart';
 import 'package:kivicare_flutter/components/gender_selection_component.dart';
 import 'package:kivicare_flutter/components/loader_widget.dart';
 import 'package:kivicare_flutter/config.dart';
 import 'package:kivicare_flutter/main.dart';
+import 'package:kivicare_flutter/model/demo_login_model.dart';
 import 'package:kivicare_flutter/model/gender_model.dart';
 import 'package:kivicare_flutter/network/patient_list_repository.dart';
 import 'package:kivicare_flutter/screens/auth/components/login_register_widget.dart';
+import 'package:kivicare_flutter/utils/app_widgets.dart';
 import 'package:kivicare_flutter/utils/colors.dart';
 import 'package:kivicare_flutter/utils/common.dart';
 import 'package:kivicare_flutter/utils/constants.dart';
@@ -22,6 +25,8 @@ class SignUpScreen extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
+
+List<DemoLoginModel> demoLoginData = demoLoginList();
 
 class _SignUpScreenState extends State<SignUpScreen> {
   GlobalKey<FormState> formKey = GlobalKey();
@@ -269,21 +274,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               .paddingAll(14)),
                     ),
                     16.height,
-                    AppTextField(
-                      textStyle: primaryTextStyle(),
+                    // AppTextField(
+                    //   textStyle: primaryTextStyle(),
+                    //   controller: contactNumberCont,
+                    //   focus: contactNumberFocus,
+                    //   nextFocus: dOBFocus,
+                    //   textFieldType: TextFieldType.PHONE,
+                    //   inputFormatters: [LengthLimitingTextInputFormatter(11)],
+                    //   isValidationRequired: true,
+                    //   decoration: inputDecoration(
+                    //       context: context,
+                    //       labelText: locale.lblContactNumber,
+                    //       suffixIcon: ic_phone
+                    //           .iconImage(size: 10, color: context.iconColor)
+                    //           .paddingAll(14)),
+                    // ),
+                    IntlPhoneField(
                       controller: contactNumberCont,
-                      focus: contactNumberFocus,
-                      nextFocus: dOBFocus,
-                      textFieldType: TextFieldType.PHONE,
-                      inputFormatters: [LengthLimitingTextInputFormatter(11)],
-                      isValidationRequired: true,
+                      focusNode: contactNumberFocus,
                       decoration: inputDecoration(
                           context: context,
                           labelText: locale.lblContactNumber,
                           suffixIcon: ic_phone
                               .iconImage(size: 10, color: context.iconColor)
                               .paddingAll(14)),
+                      initialCountryCode: 'UK',
+                      onChanged: (phone) {},
                     ),
+
                     16.height,
                     AppTextField(
                       textStyle: primaryTextStyle(),

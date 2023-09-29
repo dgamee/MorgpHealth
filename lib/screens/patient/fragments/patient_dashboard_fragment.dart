@@ -17,7 +17,8 @@ import 'package:kivicare_flutter/model/dashboard_model.dart';
 
 class PatientDashBoardFragment extends StatefulWidget {
   @override
-  _PatientDashBoardFragmentState createState() => _PatientDashBoardFragmentState();
+  _PatientDashBoardFragmentState createState() =>
+      _PatientDashBoardFragmentState();
 }
 
 class _PatientDashBoardFragmentState extends State<PatientDashBoardFragment> {
@@ -65,7 +66,8 @@ class _PatientDashBoardFragmentState extends State<PatientDashBoardFragment> {
         initialData: cachedDashboardModel,
         errorBuilder: (error) {
           return NoDataWidget(
-            imageWidget: Image.asset(ic_somethingWentWrong, height: 180, width: 180),
+            imageWidget:
+                Image.asset(ic_somethingWentWrong, height: 180, width: 180),
             title: error.toString(),
           );
         },
@@ -79,14 +81,37 @@ class _PatientDashBoardFragmentState extends State<PatientDashBoardFragment> {
             },
             padding: EdgeInsets.only(bottom: 80),
             children: [
-              DashboardFragmentDoctorServiceComponent(service: getRemovedDuplicateServiceList(snap.serviceList.validate())),
-              if (snap.upcomingAppointment.validate().isNotEmpty) DashBoardFragmentUpcomingAppointmentComponent(upcomingAppointment: snap.upcomingAppointment.validate()),
+              DashboardFragmentDoctorServiceComponent(
+                  service: getRemovedDuplicateServiceList(
+                      snap.serviceList.validate())),
+              if (snap.upcomingAppointment.validate().isNotEmpty)
+                DashBoardFragmentUpcomingAppointmentComponent(
+                    upcomingAppointment: snap.upcomingAppointment.validate()),
               16.height,
-              DashBoardFragmentTopDoctorComponent(doctorList: snap.doctor.validate()),
+              DashBoardFragmentTopDoctorComponent(
+                  doctorList: snap.doctor.validate()),
               24.height,
-              DashBoardFragmentNewsComponent(newsList: snap.news.validate()),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    backgroundColor: Color.fromRGBO(
+                        74, 97, 152, 1), // background (button) color
+                    foregroundColor: Colors.white, // foreground (text) color
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    'Insurance',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ),
             ],
-          ).visible(!appStore.isLoading, defaultWidget: PatientDashboardShimmerScreen().visible(appStore.isLoading));
+          ).visible(!appStore.isLoading,
+              defaultWidget:
+                  PatientDashboardShimmerScreen().visible(appStore.isLoading));
         },
       ),
     );

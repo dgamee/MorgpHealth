@@ -21,7 +21,14 @@ List<WeeklyAppointment> emptyGraphList = [
   WeeklyAppointment(x: locale.lblSunday, y: 0),
 ];
 
-List<String> appointmentStatusList = [locale.lblAll, locale.lblLatest, locale.lblPending, locale.lblCompleted, locale.lblCancelled, locale.lblPast];
+List<String> appointmentStatusList = [
+  locale.lblAll,
+  locale.lblLatest,
+  locale.lblPending,
+  locale.lblCompleted,
+  locale.lblCancelled,
+  locale.lblPast
+];
 
 List<String> userRoles = [locale.lblDoctor, locale.lblClinic];
 
@@ -31,9 +38,9 @@ double loaderSize = 30;
 // EmailsWakelock
 
 // local
-const receptionistEmail = "calvin@kivicare.com";
-const doctorEmail = "doctor@kivicare.com";
-const patientEmail = "mike@kivicare.com";
+const receptionistEmail = "";
+const doctorEmail = "";
+const patientEmail = "";
 
 // Live
 // const receptionistEmail = "receptionist_jenny@activelife.com";
@@ -41,7 +48,7 @@ const patientEmail = "mike@kivicare.com";
 // const patientEmail = "evadavid@activelife.com";
 
 //Demo Password
-const loginPassword = "123456";
+const loginPassword = "";
 
 /* Theme Mode Type */
 const THEME_MODE_LIGHT = 0;
@@ -163,7 +170,8 @@ const UPDATE_SESSIONS = 'UPDATE_SESSIONS';
 
 const CACHED_FEEDS_ARTICLES = 'CACHED_FEEDS_ARTICLES';
 
-const DOCTOR_ADD_API_UNSUCCESS_MESSAGE = "Sorry, that email address is already used!";
+const DOCTOR_ADD_API_UNSUCCESS_MESSAGE =
+    "Sorry, that email address is already used!";
 
 const PLAYER_ID = "PLAYER_ID";
 
