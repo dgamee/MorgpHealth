@@ -4,6 +4,7 @@ import 'package:kivicare_flutter/components/internet_connectivity_widget.dart';
 import 'package:kivicare_flutter/main.dart';
 import 'package:kivicare_flutter/network/dashboard_repository.dart';
 import 'package:kivicare_flutter/screens/patient/components/dashboard_fragment_news_component.dart';
+import 'package:kivicare_flutter/screens/patient/fragments/patient_insurance_fragment.dart';
 import 'package:kivicare_flutter/screens/patient/screens/dashboard_fragment_doctor_service_component.dart';
 import 'package:kivicare_flutter/screens/patient/components/dashboard_fragment_top_doctor_component.dart';
 import 'package:kivicare_flutter/screens/patient/components/dashboard_fragment_upcoming_appointment_component.dart';
@@ -98,7 +99,12 @@ class _PatientDashBoardFragmentState extends State<PatientDashBoardFragment> {
                         74, 97, 152, 1), // background (button) color
                     foregroundColor: Colors.white, // foreground (text) color
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => InsurancePage()),
+                    );
+                  },
                   child: const Text(
                     'Insurance',
                     style: TextStyle(fontSize: 16),
