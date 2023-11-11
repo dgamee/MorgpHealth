@@ -3,7 +3,6 @@ import 'package:kivicare_flutter/components/empty_error_state_component.dart';
 import 'package:kivicare_flutter/components/internet_connectivity_widget.dart';
 import 'package:kivicare_flutter/main.dart';
 import 'package:kivicare_flutter/network/dashboard_repository.dart';
-import 'package:kivicare_flutter/screens/patient/components/dashboard_fragment_news_component.dart';
 import 'package:kivicare_flutter/screens/patient/fragments/patient_insurance_fragment.dart';
 import 'package:kivicare_flutter/screens/patient/screens/dashboard_fragment_doctor_service_component.dart';
 import 'package:kivicare_flutter/screens/patient/components/dashboard_fragment_top_doctor_component.dart';

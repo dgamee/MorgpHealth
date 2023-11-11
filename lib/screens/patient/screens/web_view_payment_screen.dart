@@ -4,7 +4,6 @@ import 'package:kivicare_flutter/components/loader_widget.dart';
 import 'package:kivicare_flutter/main.dart';
 import 'package:kivicare_flutter/screens/doctor/fragments/appointment_fragment.dart';
 import 'package:kivicare_flutter/utils/app_common.dart';
-import 'package:kivicare_flutter/utils/colors.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

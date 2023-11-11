@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:kivicare_flutter/components/cached_image_widget.dart';
 import 'package:kivicare_flutter/components/loader_widget.dart';
 import 'package:kivicare_flutter/components/setting_third_page.dart';
-import 'package:kivicare_flutter/components/status_widget.dart';
 import 'package:kivicare_flutter/main.dart';
 import 'package:kivicare_flutter/components/doctor_recentionist_general_setting_component.dart';
 import 'package:kivicare_flutter/components/app_setting_component.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kivicare_flutter/main.dart';
-import 'package:kivicare_flutter/utils/app_common.dart';
 import 'package:kivicare_flutter/utils/colors.dart';
 import 'package:kivicare_flutter/utils/extensions/string_extensions.dart';
 import 'package:nb_utils/nb_utils.dart';

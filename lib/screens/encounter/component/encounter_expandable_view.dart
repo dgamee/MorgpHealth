@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:kivicare_flutter/components/loader_widget.dart';
 import 'package:kivicare_flutter/components/role_widget.dart';
 import 'package:kivicare_flutter/model/encounter_model.dart';
 import 'package:kivicare_flutter/network/prescription_repository.dart';

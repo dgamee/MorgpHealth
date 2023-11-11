@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl/intl.dart';
 import 'package:kivicare_flutter/components/price_widget.dart';
 import 'package:kivicare_flutter/components/role_widget.dart';
-import 'package:kivicare_flutter/components/side_date_widget.dart';
 import 'package:kivicare_flutter/components/status_widget.dart';
 import 'package:kivicare_flutter/main.dart';
 import 'package:kivicare_flutter/model/bill_list_model.dart';
@@ -15,7 +13,6 @@ import 'package:kivicare_flutter/screens/doctor/screens/generate_bill_screen.dar
 import 'package:kivicare_flutter/screens/encounter/screen/patient_encounter_dashboard_screen.dart';
 import 'package:kivicare_flutter/utils/colors.dart';
 import 'package:kivicare_flutter/utils/common.dart';
-import 'package:kivicare_flutter/utils/constants.dart';
 import 'package:kivicare_flutter/utils/extensions/string_extensions.dart';
 import 'package:nb_utils/nb_utils.dart';
 

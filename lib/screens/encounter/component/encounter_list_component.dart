@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:kivicare_flutter/components/side_date_widget.dart';
 import 'package:kivicare_flutter/components/status_widget.dart';
 import 'package:kivicare_flutter/main.dart';
 import 'package:kivicare_flutter/model/encounter_model.dart';

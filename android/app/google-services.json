@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1030276386601:android:41c50003711161d13ab138",
         "android_client_info": {
-          "package_name": "com.iqonic.kivicare"
+          "package_name": "com.iqonic.kivicare_flutter"
         }
       },
       "oauth_client": [

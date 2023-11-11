@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:kivicare_flutter/components/body_widget.dart';
 import 'package:kivicare_flutter/components/internet_connectivity_widget.dart';
 import 'package:kivicare_flutter/components/loader_widget.dart';
 import 'package:kivicare_flutter/main.dart';

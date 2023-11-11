@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:kivicare_flutter/components/body_widget.dart';
 import 'package:kivicare_flutter/components/gender_selection_component.dart';
 import 'package:kivicare_flutter/components/loader_widget.dart';
 import 'package:kivicare_flutter/config.dart';

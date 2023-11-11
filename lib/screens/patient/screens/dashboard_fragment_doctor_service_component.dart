@@ -3,7 +3,6 @@ import 'package:kivicare_flutter/components/no_data_found_widget.dart';
 import 'package:kivicare_flutter/components/view_all_widget.dart';
 import 'package:kivicare_flutter/model/service_model.dart';
 import 'package:kivicare_flutter/screens/patient/components/category_widget.dart';
-import 'package:kivicare_flutter/screens/patient/fragments/patient_insurance_fragment.dart';
 import 'package:kivicare_flutter/screens/patient/screens/patient_service_list_screen.dart';
 
 import 'package:kivicare_flutter/main.dart';

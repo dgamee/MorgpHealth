@@ -6,13 +6,11 @@ import 'package:kivicare_flutter/main.dart';
 import 'package:kivicare_flutter/screens/patient/fragments/patient_appointment_fragment.dart';
 import 'package:kivicare_flutter/screens/patient/fragments/patient_dashboard_fragment.dart';
 import 'package:kivicare_flutter/Fragments/setting_fragment.dart';
-import 'package:kivicare_flutter/screens/patient/screens/feeds/feed_fragment.dart';
 import 'package:kivicare_flutter/utils/app_common.dart';
 import 'package:kivicare_flutter/utils/colors.dart';
 import 'package:kivicare_flutter/utils/constants.dart';
 import 'package:kivicare_flutter/utils/images.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 import 'fragments/patient_insurance_fragment.dart';
 

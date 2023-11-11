@@ -110,7 +110,7 @@ Future handleResponse(Response response) async {
       } else {
         throw errorSomethingWentWrong;
       }
-    } on Exception catch (e) {
+    } on Exception {
       toast(errorSomethingWentWrong);
       throw errorSomethingWentWrong;
     }

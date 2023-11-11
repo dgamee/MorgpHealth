@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kivicare_flutter/components/app_setting_widget.dart';
-import 'package:kivicare_flutter/config.dart';
 import 'package:kivicare_flutter/main.dart';
 import 'package:kivicare_flutter/network/auth_repository.dart';
-import 'package:kivicare_flutter/screens/about_us_screen.dart';
 import 'package:kivicare_flutter/utils/app_common.dart';
 import 'package:kivicare_flutter/utils/colors.dart';
-import 'package:kivicare_flutter/utils/common.dart';
 import 'package:kivicare_flutter/utils/images.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:share/share.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingThirdPage extends StatelessWidget {
   const SettingThirdPage({Key? key}) : super(key: key);
