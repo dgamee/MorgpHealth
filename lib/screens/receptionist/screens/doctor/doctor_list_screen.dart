@@ -225,18 +225,18 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
             ],
           );
         }),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add, color: Colors.white),
-          onPressed: () async {
-            await AddDoctorScreen().launch(context).then(
-              (value) {
-                if (value ?? false) {
-                  init();
-                }
-              },
-            );
-          },
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   child: Icon(Icons.add, color: Colors.white),
+        //   onPressed: () async {
+        //     await AddDoctorScreen().launch(context).then(
+        //       (value) {
+        //         if (value ?? false) {
+        //           init();
+        //         }
+        //       },
+        //     );
+        //   },
+        // ),
       ),
     );
   }

@@ -512,8 +512,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       controller: postalCodeCont,
                       focus: postalCodeFocus,
                       inputFormatters: [
-                        FilteringTextInputFormatter
-                            .digitsOnly, // Only allows digits
+                        WhitelistingTextInputFormatter
+                            .(RegExp("[a-z A-Z 9-0]"))// Only allows digits
                       ],
                       textFieldType: TextFieldType.OTHER,
                       textInputAction: TextInputAction.done,

@@ -88,28 +88,28 @@ class _PatientDashBoardFragmentState extends State<PatientDashBoardFragment> {
                 DashBoardFragmentUpcomingAppointmentComponent(
                     upcomingAppointment: snap.upcomingAppointment.validate()),
               16.height,
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                    backgroundColor: Color.fromRGBO(
-                        74, 97, 152, 1), // background (button) color
-                    foregroundColor: Colors.white, // foreground (text) color
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => InsurancePage()),
-                    );
-                  },
-                  child: const Text(
-                    'Insurance',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(20.0),
+              //   child: ElevatedButton(
+              //     style: ElevatedButton.styleFrom(
+              //       shape: RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.circular(10.0)),
+              //       backgroundColor: Color.fromRGBO(
+              //           74, 97, 152, 1), // background (button) color
+              //       foregroundColor: Colors.white, // foreground (text) color
+              //     ),
+              //     onPressed: () {
+              //       Navigator.push(
+              //         context,
+              //         MaterialPageRoute(builder: (context) => InsurancePage()),
+              //       );
+              //     },
+              //     child: const Text(
+              //       'Insurance',
+              //       style: TextStyle(fontSize: 16),
+              //     ),
+              //   ),
+              // ),
               DashBoardFragmentTopDoctorComponent(
                   doctorList: snap.doctor.validate()),
               24.height,
